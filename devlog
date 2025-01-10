@@ -3,3 +3,6 @@ Discussed project roles, APIs, and possible routes, updated design doc
 
 adityaA -- 2025-01-09 11:47
 working app in place, requirements.txt in place with all required packages enumerated, summary of project on root-level readme
+
+stellaY -- 2025-01-09 2:02
+Wrote necessary functions for the game using REST countries and haversine distance formula
