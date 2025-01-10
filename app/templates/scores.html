@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HIGH SCORES</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: orange;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: #333;
+            color: #FFA500;
+            padding: 20px;
+        }
+
+        .score-board {
+            margin: 50px auto;
+            width: 50%;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .score-board h2 {
+            color: #FFA500;
+        }
+
+        .score {
+            font-size: 24px;
+            padding: 10px;
+            background-color: #444;
+            border: 1px solid #555;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .score span {
+            font-weight: bold;
+        }
+
+        /* Rotate animation */
+        .rotate {
+            display: inline-block;
+            animation: rotateAnimation 3s ease-in-out infinite;
+        }
+
+        @keyframes rotateAnimation {
+            0% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(90deg);
+            }
+            50% {
+                transform: rotate(180deg);
+            }
+            75% {
+                transform: rotate(270deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>HIGH SCORES</h1>
+
+    <div class="score-board">
+        <h2>Highest Scores</h2>
+        <div class="score">
+            <span class="rotate">1st Place:</span> 1500 points
+        </div>
+        <div class="score">
+            <span>2nd Place:</span> 1400 points
+        </div>
+        <div class="score">
+            <span>3rd Place:</span> a zillion points
+        </div>
+        <div class="score">
+            <span>4th Place:</span> 1200 points
+        </div>
+        <div class="score">
+            <span>5th Place:</span> 1100 points
+        </div>
+        <div class="score">
+            <span>6th Place:</span> 1 points
+        </div>
+    </div>
+</body>
+</html>
+
