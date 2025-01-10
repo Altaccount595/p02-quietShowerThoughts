@@ -28,6 +28,14 @@ def home():
         return redirect(url_for('homepage'))
     return render_template("login.html")
 
+@app.route("/game", methods=['GET', 'POST'])
+def game():
+    if 'username' in session:
+        return redirect(url_for('game'))
+       flash("Please login first", "error")
+    return render_template("homepage.html")
+    
+
 def checkPass(user, p):
     db = get_db()
     c = db.cursor()
