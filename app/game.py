@@ -1,4 +1,5 @@
 import requests
+import json
 import random
 import math
 
@@ -22,19 +23,24 @@ def haversine(lat1, lon1, lat2, lon2):
     return r * c
 
 def getRandomCountry():
-    url = 'https://restcountries.com/v3.1/all'
+    url = 'https://restcountries.com/v3.1/all?fields=name,flags,currency,language,latlng'
     response = requests.get(url)
     countries = response.json()
-    randomCountry = random.choice(countries)
-    return randomCountry
+    randomCountry = countries[4]
 
 def getCountryByName(countryName):
     url = f'https://restcountries.com/v3.1/name/{countryName}'
     response = requests.get(url)
     countryData = response.json()
-    return countryData[0] if countryData else None
+    if countryData:
+        print(countryData)
+    else:
+        print("error getting country data")
 
 def getLatLon(country):
     lat = country['latlng'][0] if 'latlng' in country else None
     lon = country['latlng'][1] if 'latlng' in country else None
     return lat, lon
+c = getRandomCountry()
+print(c)
+
