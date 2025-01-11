@@ -32,7 +32,7 @@ def home():
 def game():
     if 'username' in session:
         return redirect(url_for('game'))
-       flash("Please login first", "error")
+        flash("Please login first", "error")
     return render_template("homepage.html")
     
 
