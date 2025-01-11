@@ -10,7 +10,7 @@ import os
 import json
 
 DB_FILE = "user.db"
-db = sqlite3.connect(DB_FILE, check_same_thread=False)
+db = sqlite3.connect(DB_FILE)
 c = db.cursor()
 
 # Function to create a new database connection per request (Flask-friendly)
@@ -36,7 +36,7 @@ def addUser(u, p):
     else: #else add user
         if(u is None or p is None):
             return False
-        c.execute("INSERT INTO users (username, password) VALUES (?, ?, 0)", (u, p))
+        c.execute("INSERT INTO users (username, password, avg) VALUES (?, ?, 0)", (u, p))
         exportUsers()
         db.commit()
         return True
@@ -44,7 +44,7 @@ def addUser(u, p):
 # Adds a game to the database, returns False if game or user is null, returns true otherwise
 #parameters being array[string], string, with the first being an array of the guesses, and the second being the username
 def addGame(guesses, user):
-    if(guesses is None or user is None):
+    if(guesses is None or user is None or len(guesses) == 0):
         return False
     db = get_db()
     c = db.cursor()
@@ -52,7 +52,7 @@ def addGame(guesses, user):
     if c.fetchone() is None:
         return False
     guesses_json = json.dumps(guesses)
-    c.execute("INSERT INTO games (guesses, creatingUsername) VALUES (?,0,?)",(guesses_json,user,))
+    c.execute("INSERT INTO games (guesses, creatingUsername) VALUES (?,?)",(guesses_json,user,))
     exportGames()
     db.commit()
     return True
@@ -101,10 +101,11 @@ def checkPass(user, p):
     db = get_db()
     c = db.cursor()
     c.execute("SELECT password FROM users WHERE username =  ?",(user,))
-    if c.fetchone() is p:
-        return True
-    else:
+    temp=c.fetchone()
+    if(temp is None):
         return False
+    password=temp[0]
+    return password==p
 
 # Gets a list of all games
 def getAllGames():
@@ -169,14 +170,7 @@ def exportGames():
 
 
 
-#COMMENT THIS OUT LATER WHEN FINAL PRODUCT
-#if os.path.exists("user.db"):
-#    os.remove("user.db")
-
-
-
 
 
 makeDb()
-
 db.close()
