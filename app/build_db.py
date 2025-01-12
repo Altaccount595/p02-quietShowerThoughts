@@ -1,4 +1,4 @@
-# RACAMOJO -
+# quietShowerThoughts -
 # SoftDev
 # P01
 # 2024-12-03
@@ -7,9 +7,10 @@
 import sqlite3
 import csv
 import os
+import json
 
 DB_FILE = "user.db"
-db = sqlite3.connect(DB_FILE, check_same_thread=False)
+db = sqlite3.connect(DB_FILE)
 c = db.cursor()
 
 # Function to create a new database connection per request (Flask-friendly)
@@ -21,8 +22,8 @@ def get_db():
 def makeDb():
     db = get_db()
     c = db.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS users (username TEXT NOT NULL UNIQUE, password TEXT NOT NULL)")
-    c.execute("CREATE TABLE IF NOT EXISTS memes (id INTEGER PRIMARY KEY AUTOINCREMENT, image TEXT, upvotes INTEGER, creatingUsername TEXT NOT NULL, FOREIGN KEY (creatingUsername) REFERENCES users (username))")
+    c.execute("CREATE TABLE IF NOT EXISTS users (username TEXT NOT NULL UNIQUE, password TEXT NOT NULL, avg REAL DEFAULT 0)")
+    c.execute("CREATE TABLE IF NOT EXISTS games (id INTEGER PRIMARY KEY AUTOINCREMENT, guesses TEXT, creatingUsername TEXT NOT NULL, FOREIGN KEY (creatingUsername) REFERENCES users (username))")
     db.commit()
 
 # Registers a user with a username and password,returns false if username is already taken or is null, returns true otherwise
@@ -35,42 +36,64 @@ def addUser(u, p):
     else: #else add user
         if(u is None or p is None):
             return False
-        c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (u, p))
+        c.execute("INSERT INTO users (username, password, avg) VALUES (?, ?, 0)", (u, p))
         exportUsers()
         db.commit()
         return True
 
-# Adds a meme to the database, returns False if meme or user is null, returns true otherwise
-#the image should be stored as a string which links to the image
-#parameters being string, string, with the first being the link to the image, and the second being the username
-def addMeme(img, user):
-    if(img is None or user is None):
+# Adds a game to the database, returns False if game or user is null, returns true otherwise
+#parameters being array[string], string, with the first being an array of the guesses, and the second being the username
+def addGame(guesses, user):
+    if(guesses is None or user is None or len(guesses) == 0):
         return False
     db = get_db()
     c = db.cursor()
     c.execute("SELECT username FROM users WHERE username = ?",(user,))
     if c.fetchone() is None:
         return False
-    c.execute("INSERT INTO memes (image, upvotes, creatingUsername) VALUES (?,0,?)",(img,user,))
-    exportMemes()
+    guesses_json = json.dumps(guesses)
+    c.execute("INSERT INTO games (guesses, creatingUsername) VALUES (?,?)",(guesses_json,user,))
+    exportGames()
     db.commit()
     return True
 
-# Gets a list of all memes created by a user, returns a list of all memes
+# Gets a list of all games played by a user, returns a list of all games
 #parameters: String which is the username
-def getUserMemes(username):
+def getUserGames(username):
     db = get_db()
     c = db.cursor()
-    c.execute("SELECT id, image, upvotes FROM memes WHERE creatingUsername = ?", (username,))
-    return c.fetchall()
+    c.execute("SELECT * FROM games WHERE creatingUsername = ?", (username,))
+    rows = c.fetchall()
+    # Process each row to convert JSON-encoded guesses into a Python list
+    games = []
+    for row in rows:
+        game_id, guesses_json, creating_username = row
+        guesses = json.loads(guesses_json)
+        games.append({
+            "id": game_id,
+            "guesses": guesses,
+            "creatingUsername": creating_username
+        })
+    return games
 
-# Gets a specific meme based on id and returns it
-#Parameters: integer which is the meme id
-def getMeme(id):
+# Gets a specific game based on id and returns it
+#Parameters: integer which is the game id
+def getGame(id):
     db = get_db()
     c = db.cursor()
-    c.execute("SELECT id, image, upvotes, creatingUsername FROM memes WHERE id = ?", (id,))
-    return c.fetchone()  # This returns the first matching row, or None if no match is found
+    c.execute("SELECT * FROM games WHERE id = ?", (id,))
+    row = c.fetchone()  # Fetch one row from the result set
+    if row:
+        game_id, guesses_json, creating_username = row
+        guesses = json.loads(guesses_json)  # Convert JSON string back to Python list
+        return {
+            "id": game_id,
+            "guesses": guesses,
+            "creatingUsername": creating_username
+        }
+    else:
+        return None
+    #returns none if no id found
 
 # checks the user's password, if it matches return true, else return false
 #Parameters: String, String, with them being the username and password respectively
@@ -78,24 +101,37 @@ def checkPass(user, p):
     db = get_db()
     c = db.cursor()
     c.execute("SELECT password FROM users WHERE username =  ?",(user,))
-    if c.fetchone() is p:
-        return True
-    else:
+    temp=c.fetchone()
+    if(temp is None):
         return False
+    password=temp[0]
+    return password==p
 
-# Gets a list of all memes
-def getAllMemes():
+# Gets a list of all games
+def getAllGames():
     db = get_db()
     c = db.cursor()
-    c.execute("SELECT id, image, upvotes, creatingUsername FROM memes")
-    return c.fetchall()
+    c.execute("SELECT * FROM games")
+    rows = c.fetchall()
+    # Process each row to convert JSON-encoded guesses into a Python list
+    games = []
+    for row in rows:
+        game_id, guesses_json, creating_username = row
+        guesses = json.loads(guesses_json)
+        games.append({
+            "id": game_id,
+            "guesses": guesses,
+            "creatingUsername": creating_username
+        })
+    return games
 
-# Deletes a meme, helper function only DO NOT CALL OUTSIDE
-def deleteMeme(id):
+
+# Deletes a game, helper function only DO NOT CALL OUTSIDE
+def deleteGame(id):
     db = get_db()
     c = db.cursor()
-    c.execute("DELETE FROM memes WHERE id = ?", (id,))
-    exportMemes()
+    c.execute("DELETE FROM games WHERE id = ?", (id,))
+    exportGames()
     db.commit()
 
 # Deletes a user, returns false if user doesn't exist
@@ -106,27 +142,14 @@ def deleteUser(user):
     c.execute("SELECT username FROM users WHERE username= ?",(user,))
     if c.fetchone() is None:
         return False
-    c.execute("SELECT * FROM memes WHERE creatingUsername = ?", (user,))
-    allMemes = [row[0] for row in c.fetchall()]
-    for meme in allMemes:
-        deleteMeme(meme)
+    c.execute("SELECT * FROM games WHERE creatingUsername = ?", (user,))
+    allGames = [row[0] for row in c.fetchall()]
+    for game in allGames:
+        deleteGame(game)
     c.execute("DELETE FROM users WHERE username = ?",(user,))
     exportUsers()
     db.commit()
     return True
-
-#upvotes a meme, returns false if meme doesnt exist
-#parameters: integer which is the meme id
-def upvote(id):
-    db = get_db()
-    c = db.cursor()
-    c.execute("SELECT * FROM memes WHERE id = ?", (id,))
-    if c.fetchone() is None:
-        return False
-    else:
-        c.execute("UPDATE memes SET upvotes = upvotes + 1 WHERE id = ?", (id,))
-        db.commit()
-        return True
 
 # Helper function to export data to CSV
 def exportToCSV(query, filename):
@@ -141,20 +164,13 @@ def exportToCSV(query, filename):
 def exportUsers():
     exportToCSV("SELECT * FROM users", 'users.csv')
 
-def exportMemes():
-    exportToCSV("SELECT * FROM memes", 'memes.csv')
+def exportGames():
+    exportToCSV("SELECT * FROM games", 'games.csv')
 
-
-
-
-#COMMENT THIS OUT LATER WHEN FINAL PRODUCT
-#if os.path.exists("user.db"):
-#    os.remove("user.db")
 
 
 
 
 
 makeDb()
-
 db.close()
