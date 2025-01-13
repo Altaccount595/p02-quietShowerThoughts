@@ -97,12 +97,12 @@ def getUserGames(username):
     # Process each row to convert JSON-encoded guesses into a Python list
     games = []
     for row in rows:
-        game_id, guesses_json, creating_username = row
-        guesses = json.loads(guesses_json)
+        gameId, guessesJson, creatingUsername = row
+        guesses = json.loads(guessesJson)
         games.append({
-            "id": game_id,
+            "id": gameId,
             "guesses": guesses,
-            "creatingUsername": creating_username
+            "creatingUsername": creatingUsername
         })
     return games
 
@@ -114,12 +114,12 @@ def getGame(id):
     c.execute("SELECT * FROM games WHERE id = ?", (id,))
     row = c.fetchone()  # Fetch one row from the result set
     if row:
-        game_id, guesses_json, creating_username = row
-        guesses = json.loads(guesses_json)  # Convert JSON string back to Python list
+        gameId, guessesJson, creatingUsername = row
+        guesses = json.loads(guessesJson)  # Convert JSON string back to Python list
         return {
-            "id": game_id,
+            "id": gameId,
             "guesses": guesses,
-            "creatingUsername": creating_username
+            "creatingUsername": creatingUsername
         }
     else:
         return None
@@ -155,6 +155,18 @@ def getAllGames():
         })
     return games
 
+# Gets a list of all users
+def getAllUsers():
+    db = get_db()
+    c = db.cursor()
+    c.execute("SELECT * FROM users")
+    return c.fetchall()
+#gets the 5 lowest averages, returns [{username:user1,avg:avg1},{username:user2,avg:avg2}...]
+def get5LowestAvg():
+    db = get_db()
+    c = db.cursor()
+    c.execute("SELECT username, avg FROM users ORDER BY avg ASC LIMIT 5")
+    return c.fetchall()
 
 # Deletes a game, helper function only DO NOT CALL OUTSIDE
 def deleteGame(id):
@@ -198,12 +210,29 @@ def exportGames():
     exportToCSV("SELECT * FROM games", 'games.csv')
 
 makeDb()
-#print(addUser("ooga","booga"))
+
+
 #print(getAvg("ooga"))
 #print(getAvg("steve"))
 #print(addGame(["Italy","japan"],"ooga"))
 #print(getAvg("ooga"))
-#print(addGame(["Italy","japan","usa"],"ooga"))
-#print(addGame(["Italy","japan","usa"],"ooga"))
+#print(addGame(["usa","germany","russia"],"ooga"))
+#print(addGame(["Mexico","South Africa","India"],"ooga"))
 #print(getAvg("ooga"))
+
+
+#LEAVE THIS IN!!!!!!!!!!!!
+addUser("ooga","booga")
+addGame(["Italy","japan","japan","japan","japan"],"ooga")
+addUser("123","456")
+addGame(["Italy","japan","japan","japan","japan","USA","USA","USA","USA","USA","USA","USA"],"123")
+addUser("abc","def")
+addGame(["Italy","japan","japan","japan","japan","USA","USA","USA","USA","USA","USA","USA"],"abc")
+addUser("chopped","chin")
+addGame(["Italy","japan","japan","japan","japan","USA","USA","USA","USA","USA","USA","USA","France","France","France","France","France","France"],"chopped")
+addUser("test","case")
+addGame(["Italy","japan","japan","japan","japan","USA","USA","USA","USA","USA","USA","USA","Germany","Germany","Germany","Germany","Germany","Germany","Germany","Germany"],"test")
+addUser("Dweeb","Password")
+addGame(["Italy","japan","japan","japan","japan","USA","USA","USA","USA","Prussia","Prussia","Prussia","Prussia","Prussia","Prussia","Prussia","Germany","Prussia","Prussia","Prussia","Prussia","Prussia","Prussia","Prussia"],"Dweeb")
+
 db.close()
