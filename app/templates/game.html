@@ -45,16 +45,19 @@
 </head>
 <body>
 
-    <div class="game-container">
+   <div class="game-container">
         <h1>Guess the Country</h1>
         <p>Guess the country</p>
         
-        <input type="text" id="guess" placeholder="Enter your guess">
-        <button onclick="">Submit Guess</button>
+        <form action="/guess" method="post">
+            <input type="text" id="guess" name="guess" placeholder="Enter your guess">
+            <button type="submit">Submit Guess</button>
+        </form>
         
-        <div class="message" id="message"></div>
+        <div class="message" id="message">{{ message }}</div>
+        <div class="guesses-left" id="guesses-left">Guesses Left: {{ gameState.guessesLeft }}</div>
     </div>
-
+    
 </body>
 </html>
 
