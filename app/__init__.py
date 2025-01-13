@@ -77,7 +77,7 @@ def guess():
     if 'username' not in session:
         return jsonify({"error": "Unauthorized"}), 403
 
-    # Get the guess from the form data (since you're using a form submission)
+    # Get the guess from the form data
     user_guess = request.form.get('guess')
 
     if not user_guess:
