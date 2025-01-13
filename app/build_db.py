@@ -51,9 +51,27 @@ def addGame(guesses, user):
     c.execute("SELECT username FROM users WHERE username = ?",(user,))
     if c.fetchone() is None:
         return False
+
+    #INSERT CODE UPDATING THE USERS AVERAGE
     guesses_json = json.dumps(guesses)
     c.execute("INSERT INTO games (guesses, creatingUsername) VALUES (?,?)",(guesses_json,user,))
     exportGames()
+    db.commit()
+    return True
+
+def updateAvg(guesses, user):
+    db = get_db()
+    c = db.cursor()
+    games = getUserGames(user)
+    total = 0
+    for game in games:
+        total+= games["guesses"]
+    avg=(total+len(guesses))/(len(games)+1)
+    c.execute("SELECT username FROM users WHERE username = ?",(user,))
+    if c.fetchone() is None:
+        return False
+    c.execute("UPDATE users SET avg = ? WHERE username = ?", (avg,user,))
+    exportUsers()
     db.commit()
     return True
 
