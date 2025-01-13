@@ -51,8 +51,8 @@ def addGame(guesses, user):
     c.execute("SELECT username FROM users WHERE username = ?",(user,))
     if c.fetchone() is None:
         return False
-
     #INSERT CODE UPDATING THE USERS AVERAGE
+    updateAvg(guesses,user)
     guesses_json = json.dumps(guesses)
     c.execute("INSERT INTO games (guesses, creatingUsername) VALUES (?,?)",(guesses_json,user,))
     exportGames()
@@ -65,7 +65,8 @@ def updateAvg(guesses, user):
     games = getUserGames(user)
     total = 0
     for game in games:
-        total+= games["guesses"]
+        #print(game["guesses"])
+        total+= len(game["guesses"])
     avg=(total+len(guesses))/(len(games)+1)
     c.execute("SELECT username FROM users WHERE username = ?",(user,))
     if c.fetchone() is None:
@@ -74,6 +75,17 @@ def updateAvg(guesses, user):
     exportUsers()
     db.commit()
     return True
+
+# returns the user's avg as double/float? one of those 2, returns -1 if the user doesn't exist
+#Parameters: String, with it being the username 
+def getAvg(user):
+    db = get_db()
+    c = db.cursor()
+    c.execute("SELECT avg FROM users WHERE username =  ?",(user,))
+    temp=c.fetchone()
+    if(temp is None):
+        return -1
+    return temp[0]
 
 # Gets a list of all games played by a user, returns a list of all games
 #parameters: String which is the username
@@ -185,10 +197,13 @@ def exportUsers():
 def exportGames():
     exportToCSV("SELECT * FROM games", 'games.csv')
 
-
-
-
-
-
 makeDb()
+#print(addUser("ooga","booga"))
+#print(getAvg("ooga"))
+#print(getAvg("steve"))
+#print(addGame(["Italy","japan"],"ooga"))
+#print(getAvg("ooga"))
+#print(addGame(["Italy","japan","usa"],"ooga"))
+#print(addGame(["Italy","japan","usa"],"ooga"))
+#print(getAvg("ooga"))
 db.close()
