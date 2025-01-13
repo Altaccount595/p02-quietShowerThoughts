@@ -30,10 +30,11 @@ def getCountryByName(countryName):
     url = f'https://restcountries.com/v3.1/name/{countryName}?fields=name,latlng'
     response = requests.get(url)
     countryData = response.json()
-    if countryData:
+    try:
         return countryData[0]
-    return None
-
+    except:
+        return "error"
+print(getCountryByName("123"))
 def getLatLon(country):
     if 'latlng' in country:
         lat = country['latlng'][0]
@@ -55,6 +56,7 @@ def startGame():
     return gameState
 
 def processGuess(gameState, userGuess):
+    d = 0
     if gameState["guessesLeft"] <= 0:
         return {"message": "Game over", "distance": None}
 
@@ -77,18 +79,3 @@ def processGuess(gameState, userGuess):
         return {"message": "Game over", "distance": None}
 
     return {"message": None, "distance": round(distance, 2)}
-
-c = getRandomCountry()
-germany = getCountryByName("norway")
-if c and germany:
-    cCoor = getLatLon(c)
-    germanyCoor = getLatLon(germany)
-    if cCoor[0] is not None and germanyCoor[0] is not None:
-        distance = haversine(cCoor[0], cCoor[1], germanyCoor[0], germanyCoor[1])
-        print("Random Country:", c["name"]["common"])
-        print("Norway:", germany["name"]["common"])
-        print("Distance:", distance, "km")
-    else:
-        print("Could not retrieve coordinates for one of the countries.")
-else:
-    print("Failed to retrieve data for countries.")
