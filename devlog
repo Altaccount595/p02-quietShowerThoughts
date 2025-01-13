@@ -27,3 +27,6 @@ Wrote game functions
 
 cadenK -- 2025-01-12 8:30 
 Changing HTML to link it to the flask app
+
+adityaA -- 2025-01-13 11:47
+Worked with Stella to make sure guesses that aren't countries don't return an error

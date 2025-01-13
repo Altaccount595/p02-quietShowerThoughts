@@ -36,9 +36,18 @@
             border: none;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s;
         }
         button:hover {
             background-color: #45a049;
+            animation: shake 0.5s ease-in-out;
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-40px); }
+            50% { transform: translateX(40px); }
+            75% { transform: translateX(-40px); }
+            100% { transform: translateX(40px); }
         }
         .message {
             margin-top: 20px;
