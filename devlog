@@ -1,4 +1,4 @@
-margieC, adityaA, suhanaK, stellaY -- 2025-01-08 11:47
+jonathanM, adityaA, cadenK, stellaY -- 2025-01-08 11:47
 Discussed project roles, APIs, and possible routes, updated design doc
 
 cadenK -- 2025-01-09 11:40 
@@ -7,7 +7,7 @@ Worked on different html pages for homepage and game + app.py
 adityaA -- 2025-01-09 11:47
 working app in place, requirements.txt in place with all required packages enumerated, summary of project on root-level readme
 
-stellaY -- 2025-01-09 2:02 am
+stellaY -- 2025-01-09 2:02 
 Wrote necessary functions for the game using REST countries and haversine distance formula
 
 cadenK -- 2025-01-10 11:47 
@@ -30,3 +30,9 @@ Changing HTML to link it to the flask app
 
 adityaA -- 2025-01-13 11:47
 Worked with Stella to make sure guesses that aren't countries don't return an error
+
+stellaY -- 2025-01-13 11:47
+Fixed invalid guesses, started debugging distance
+
+stellaY -- 2025-01-13 22:50
+Removed printf statement, distance works, needs handling in templates
