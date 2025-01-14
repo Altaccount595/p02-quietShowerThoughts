@@ -48,3 +48,6 @@ added new functions for calculating averages and getting the lowest averages. Al
 
 stellaY -- 2025-01-13 22:50
 Removed printf statement, distance works, needs handling in templates
+
+adityaA -- 2025-01-14 11:47
+Worked on distance and score
