@@ -76,5 +76,10 @@ def processGuess(gameState, userGuess):
 
     gameState["guessesLeft"] -= 1
     if gameState["guessesLeft"] == 0:
+<<<<<<< HEAD
+        return {"message": "Game over", "distance": distance, "answer": gameState["target"]["name"]}
+    printf(distance)
+=======
         return {"message": "Game over", "distance": distance}
+>>>>>>> 37fb462fdb3c482e1cce80c45d66b4b25e009f66
     return {"message": "Wrong!", "distance": round(distance, 2)}

@@ -44,14 +44,20 @@
         }
         @keyframes shake {
             0% { transform: translateX(0); }
-            25% { transform: translateX(-40px); }
-            50% { transform: translateX(40px); }
-            75% { transform: translateX(-40px); }
-            100% { transform: translateX(40px); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(10px); }
         }
         .message {
             margin-top: 20px;
             font-size: 18px;
+        }
+        
+        .buttons-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
     </style>
 </head>
@@ -70,5 +76,9 @@
         <div class="guesses-left" id="guesses-left">Guesses Left: {{ gameState.guessesLeft }}</div>
     </div>
     
+    <div class="buttons-container">
+        <button class="btn" onclick="window.location.href='/scores'">Leaderboard</button>
+    </div>
+
 </body>
 </html>
