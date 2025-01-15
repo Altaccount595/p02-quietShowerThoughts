@@ -47,9 +47,12 @@ def startGame():
     if not randomCountry:
         return {"error": "Could not fetch a random country."}
 
+    countryName = randomCountry["name"]["common"]
+    print(f"The actual country is: {countryName}")
+
     gameState = {
         "target": {
-            "name": randomCountry["name"]["common"],
+            "name": countryName,
             "latlng": getLatLon(randomCountry)
         },
         "guessesLeft": 6,
