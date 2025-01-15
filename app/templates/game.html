@@ -58,11 +58,34 @@
             font-size: 16px;
             color: #555;
         }
+        .guesses-left {
+            margin-top: 10px;
+            font-size: 16px;
+        }
 
         .buttons-container {
             position: absolute;
             top: 20px;
             right: 20px;
+        }
+
+        table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
@@ -84,6 +107,23 @@
             {% endif %}
         </div>
         <div class="guesses-left" id="guesses-left">Guesses Left: {{ gameState.guessesLeft }}</div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Guess</th>
+                    <th>Distance (km)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for message, cumulativeDistance in gameState.previousGuesses %}
+                <tr>
+                    <td>{{ message }}</td>
+                    <td>{{ gameState.cumulativeDistance }} km</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 
     <div class="buttons-container">
