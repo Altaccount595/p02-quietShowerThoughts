@@ -44,14 +44,25 @@
         }
         @keyframes shake {
             0% { transform: translateX(0); }
-            25% { transform: translateX(-40px); }
-            50% { transform: translateX(40px); }
-            75% { transform: translateX(-40px); }
-            100% { transform: translateX(40px); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(10px); }
         }
         .message {
             margin-top: 20px;
             font-size: 18px;
+        }
+        .distance {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .buttons-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
     </style>
 </head>
@@ -60,15 +71,24 @@
    <div class="game-container">
         <h1>Guess the Country</h1>
         <p>Guess the country</p>
-        
+
         <form action="/guess" method="post">
             <input type="text" id="guess" name="guess" placeholder="Enter your guess">
             <button type="submit">Submit Guess</button>
         </form>
-        
+
         <div class="message" id="message">{{ message }}</div>
+        <div class="distance" id="distance">
+            {% if distance is not none %}
+                Distance from the target country: {{ distance }} km
+            {% endif %}
+        </div>
         <div class="guesses-left" id="guesses-left">Guesses Left: {{ gameState.guessesLeft }}</div>
     </div>
-    
+
+    <div class="buttons-container">
+        <button class="btn" onclick="window.location.href='/scores'">Leaderboard</button>
+    </div>
+
 </body>
 </html>

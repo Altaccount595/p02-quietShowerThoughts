@@ -1,0 +1,60 @@
+id,guesses,creatingUsername
+1,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan""]",ooga
+2,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",123
+3,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",abc
+4,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""France"", ""France"", ""France"", ""France"", ""France"", ""France""]",chopped
+5,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany""]",test
+6,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Germany"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia""]",Dweeb
+7,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan""]",ooga
+8,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",123
+9,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",abc
+10,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""France"", ""France"", ""France"", ""France"", ""France"", ""France""]",chopped
+11,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany""]",test
+12,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Germany"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia""]",Dweeb
+13,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan""]",ooga
+14,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",123
+15,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",abc
+16,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""France"", ""France"", ""France"", ""France"", ""France"", ""France""]",chopped
+17,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany""]",test
+18,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Germany"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia""]",Dweeb
+19,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan""]",ooga
+20,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",123
+21,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",abc
+22,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""France"", ""France"", ""France"", ""France"", ""France"", ""France""]",chopped
+23,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany""]",test
+24,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Germany"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia""]",Dweeb
+25,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan""]",ooga
+26,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",123
+27,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",abc
+28,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""France"", ""France"", ""France"", ""France"", ""France"", ""France""]",chopped
+29,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany""]",test
+30,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Germany"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia""]",Dweeb
+31,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan""]",ooga
+32,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",123
+33,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",abc
+34,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""France"", ""France"", ""France"", ""France"", ""France"", ""France""]",chopped
+35,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany""]",test
+36,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Germany"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia""]",Dweeb
+37,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan""]",ooga
+38,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",123
+39,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",abc
+40,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""France"", ""France"", ""France"", ""France"", ""France"", ""France""]",chopped
+41,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany""]",test
+42,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Germany"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia""]",Dweeb
+43,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan""]",ooga
+44,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",123
+45,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",abc
+46,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""France"", ""France"", ""France"", ""France"", ""France"", ""France""]",chopped
+47,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany""]",test
+48,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Germany"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia""]",Dweeb
+49,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan""]",ooga
+50,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",123
+51,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",abc
+52,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""France"", ""France"", ""France"", ""France"", ""France"", ""France""]",chopped
+53,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany""]",test
+54,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Germany"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia"", ""Prussia""]",Dweeb
+55,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan""]",ooga
+56,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",123
+57,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA""]",abc
+58,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""France"", ""France"", ""France"", ""France"", ""France"", ""France""]",chopped
+59,"[""Italy"", ""japan"", ""japan"", ""japan"", ""japan"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""USA"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany"", ""Germany""]",test

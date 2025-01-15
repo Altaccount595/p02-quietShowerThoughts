@@ -105,6 +105,7 @@ def reset():
     guesser.reset_game()
     return jsonify({"message": "Game reset successfully"})
 
+
 @app.route('/logout')
 def logout():
     """Log out the user and redirect to the homepage."""
