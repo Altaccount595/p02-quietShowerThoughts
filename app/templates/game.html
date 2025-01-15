@@ -103,7 +103,7 @@
         <div class="message" id="message">{{ message }}</div>
         <div class="distance" id="distance">
             {% if distance is not none %}
-                Distance from the target country: {{ gameState.cumulativeDistance }} km
+                Distance from the target country: {{ gameState.lastDistance }} km
             {% endif %}
         </div>
         <div class="guesses-left" id="guesses-left">Guesses Left: {{ gameState.guessesLeft }}</div>
