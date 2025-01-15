@@ -50,19 +50,21 @@ def startGame():
         "target": {
             "name": randomCountry["name"]["common"],
             "latlng": getLatLon(randomCountry)
-        },
+        }
         "guessesLeft": 6
+        "distance" : 0
+        "sumdistance": 0
     }
     return gameState
 
 def processGuess(gameState, userGuess):
     d = 0
     if gameState["guessesLeft"] <= 0:
-        return {"message": "Game over", "distance": "blah blah"}
+        return {"message": "Game over", "distance": None}
 
     guessedCountry = getCountryByName(userGuess)
     if not guessedCountry:
-        return {"message": "Invalid", "distance": "another test case"}
+        return {"message": "Invalid", "distance": none}
 
     guessedLatLon = getLatLon(guessedCountry)
     if guessedLatLon[0] is None:
@@ -76,10 +78,4 @@ def processGuess(gameState, userGuess):
 
     gameState["guessesLeft"] -= 1
     if gameState["guessesLeft"] == 0:
-<<<<<<< HEAD
-        return {"message": "Game over", "distance": distance, "answer": gameState["target"]["name"]}
-    printf(distance)
-=======
-        return {"message": "Game over", "distance": distance}
->>>>>>> 37fb462fdb3c482e1cce80c45d66b4b25e009f66
-    return {"message": "Wrong!", "distance": round(distance, 2)}
+    return {"message": "Game over", "distance": distance, "answer": gameState["target"]["name"]}    return {"message": "Wrong!", "distance": round(distance, 2)}
