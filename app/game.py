@@ -47,18 +47,16 @@ def startGame():
     if not randomCountry:
         return {"error": "Could not fetch a random country."}
 
-    countryName = randomCountry["name"]["common"]
-    print(f"The actual country is: {countryName}")
-
     gameState = {
         "target": {
-            "name": countryName,
+            "name": randomCountry["name"]["common"],
             "latlng": getLatLon(randomCountry)
         },
         "guessesLeft": 6,
         "cumulativeDistance": 0.0,
         "lastDistance": None
         }
+    print(gameState["target"]["name"])  #for cheating
     return gameState
 
 def processGuess(gameState, userGuess):
@@ -75,8 +73,8 @@ def processGuess(gameState, userGuess):
 
     targetLatLon = gameState["target"]["latlng"]
     distance = haversine(targetLatLon[0], targetLatLon[1], guessedLatLon[0], guessedLatLon[1])
-
-    gameState["lastDistance"] = round(distance, 2)
+    distance = round(distance, 2)
+    gameState["lastDistance"] = distance
     gameState["cumulativeDistance"] += distance
     gameState["guessesLeft"] -= 1
 
@@ -87,6 +85,3 @@ def processGuess(gameState, userGuess):
         return {"message": "Game over", "distance": gameState["lastDistance"], "cumulativeDistance": gameState["cumulativeDistance"]}
 
     return {"message": "Wrong!", "distance": gameState["lastDistance"], "cumulativeDistance": gameState["cumulativeDistance"]}
-d = startGame()
-print(processGuess(d, "germany"))
-print(d["target"]["name"])
