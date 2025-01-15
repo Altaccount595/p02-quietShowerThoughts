@@ -46,6 +46,9 @@ Worked with Stella to make sure guesses that aren't countries don't return an er
 stellaY -- 2025-01-13 11:47
 Fixed invalid guesses, started debugging distance
 
+cadenK -- 2025-01-13 11:47
+Added more to the different pages and fixed redirects
+
 jonathanM -- 2025-01-13 6:00
 added new functions for calculating averages and getting the lowest averages. Also tested said functions
 
