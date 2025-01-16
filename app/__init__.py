@@ -130,7 +130,7 @@ def save_game():
 
 @app.route('/all_games')
 def all_games():
-    """Get all games (admin or debug purposes)."""
+    """Get all games (debug purposes)."""
     if 'username' not in session:
         return jsonify({"error": "Unauthorized"}), 403
 
