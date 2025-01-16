@@ -22,8 +22,7 @@ We are working on recreating a simplified version of geography games like Globle
 
 3. In your terminal, run the command
 
-        pip install flask
-        pip install requests 
+        pip install -r p02-quietShowerThoughts/requirements.txt
 
 # Launch Codes
 1. Activate the virtual environment from the install guide if not activated already
