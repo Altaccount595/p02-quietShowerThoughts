@@ -119,7 +119,10 @@ def save_game():
         return jsonify({"error": "Unauthorized"}), 403
 
     data = request.get_json()
-    guesses = data.get('guesses')
+    """guesses = data.get('guesses')"""
+    guesses = gamestate["guessesLeft"]
+    avgGuesses = updateAvg(guesses, username)
+    lowest = get5LowestAvg()
 
     if not guesses or not isinstance(guesses, list):
         return jsonify({"error": "Invalid game data."}), 400
