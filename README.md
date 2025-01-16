@@ -29,7 +29,7 @@ We are working on recreating a simplified version of geography games like Globle
 1. Activate the virtual environment from the install guide if not activated already
 2. Change directory into the app folder
 
-        cd 
+        cd p02-quietShowerThoughts
 
 
 3. Run the App:
