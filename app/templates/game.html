@@ -44,14 +44,48 @@
         }
         @keyframes shake {
             0% { transform: translateX(0); }
-            25% { transform: translateX(-40px); }
-            50% { transform: translateX(40px); }
-            75% { transform: translateX(-40px); }
-            100% { transform: translateX(40px); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(10px); }
         }
         .message {
             margin-top: 20px;
             font-size: 18px;
+        }
+        .distance {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+        .guesses-left {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .buttons-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
@@ -60,15 +94,41 @@
    <div class="game-container">
         <h1>Guess the Country</h1>
         <p>Guess the country</p>
-        
+
         <form action="/guess" method="post">
             <input type="text" id="guess" name="guess" placeholder="Enter your guess">
             <button type="submit">Submit Guess</button>
         </form>
-        
+
         <div class="message" id="message">{{ message }}</div>
+        <div class="distance" id="distance">
+            {% if gameState.lastDistance is not none %}
+                Distance from the target country: {{ gameState.lastDistance }} km
+            {% endif %}
+        </div>
         <div class="guesses-left" id="guesses-left">Guesses Left: {{ gameState.guessesLeft }}</div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Guess</th>
+                    <th>Distance (km)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for guess, distance in gameState.previousGuesses %}
+                <tr>
+                    <td>{{ guess }}</td>
+                    <td>{{ distance }} km</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-    
+
+    <div class="buttons-container">
+        <button class="btn" onclick="window.location.href='/scores'">Leaderboard</button>
+    </div>
+
 </body>
 </html>

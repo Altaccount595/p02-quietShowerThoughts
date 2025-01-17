@@ -105,6 +105,7 @@ def reset():
     guesser.reset_game()
     return jsonify({"message": "Game reset successfully"})
 
+
 @app.route('/logout')
 def logout():
     """Log out the user and redirect to the homepage."""
@@ -118,7 +119,10 @@ def save_game():
         return jsonify({"error": "Unauthorized"}), 403
 
     data = request.get_json()
-    guesses = data.get('guesses')
+    """guesses = data.get('guesses')"""
+    guesses = gamestate["guessesLeft"]
+    avgGuesses = updateAvg(guesses, username)
+    lowest = get5LowestAvg()
 
     if not guesses or not isinstance(guesses, list):
         return jsonify({"error": "Invalid game data."}), 400
@@ -129,7 +133,7 @@ def save_game():
 
 @app.route('/all_games')
 def all_games():
-    """Get all games (admin or debug purposes)."""
+    """Get all games (debug purposes)."""
     if 'username' not in session:
         return jsonify({"error": "Unauthorized"}), 403
 

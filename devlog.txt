@@ -1,0 +1,65 @@
+jonathanM, adityaA, cadenK, stellaY -- 2025-01-08 11:47
+Discussed project roles, APIs, and possible routes, updated design doc
+
+cadenK -- 2025-01-09 11:40
+Worked on different html pages for homepage and game + app.py
+
+adityaA -- 2025-01-09 11:47
+working app in place, requirements.txt in place with all required packages enumerated, summary of project on root-level readme
+
+stellaY -- 2025-01-09 2:02
+Wrote necessary functions for the game using REST countries and haversine distance formula
+
+cadenK -- 2025-01-10 11:47
+Wrote beginnings for every page
+
+jonathanM -- 2025-10 11:47
+Finished copying over old database code for storing usernames and passwords
+
+adityaA -- 2025-01-10 11:47
+Worked on flask code
+
+stellaY -- 2025-01-10 2:20
+update gamestate
+
+stellaY -- 2025-01-10 11:47
+Began debugging and reading documentation
+
+stellaY -- 2025-01-10 10:00
+Finished writing new functions to store scores and guesses
+
+stellaY -- 2025-01-11 1:08
+Debugged code, wrote test cases for distance + country getting methods
+
+jonathanM -- 2025-01-11 6:00
+Finished debugging the new database code
+
+stellaY -- 2025-01-12 4:24
+Wrote game functions
+
+cadenK -- 2025-01-12 8:30
+Changing HTML to link it to the flask app
+
+adityaA -- 2025-01-13 11:47
+Worked with Stella to make sure guesses that aren't countries don't return an error
+
+stellaY -- 2025-01-13 11:47
+Fixed invalid guesses, started debugging distance
+
+cadenK -- 2025-01-13 11:47
+Added more to the different pages and fixed redirects
+
+jonathanM -- 2025-01-13 6:00
+added new functions for calculating averages and getting the lowest averages. Also tested said functions
+
+stellaY -- 2025-01-13 22:50
+Removed printf statement, distance works, needs handling in templates
+
+adityaA -- 2025-01-14 11:47
+Worked on distance and score
+
+adityaA -- 2025-01-15 11:47
+Worked with Stella for rounding issue
+
+stellaY --2025-01-15 11:47
+fix rounding + distance

@@ -29,18 +29,19 @@ def getRandomCountry():
 def getCountryByName(countryName):
     url = f'https://restcountries.com/v3.1/name/{countryName}?fields=name,latlng'
     response = requests.get(url)
-    countryData = response.json()
     try:
+        countryData = response.json()
         return countryData[0]
     except:
-        return "error"
-print(getCountryByName("123"))
+        return None
+
 def getLatLon(country):
     if 'latlng' in country:
         lat = country['latlng'][0]
         lon = country['latlng'][1]
         return lat, lon
     return None, None
+
 def startGame():
     randomCountry = getRandomCountry()
     if not randomCountry:
@@ -51,31 +52,36 @@ def startGame():
             "name": randomCountry["name"]["common"],
             "latlng": getLatLon(randomCountry)
         },
-        "guessesLeft": 6
-    }
+        "guessesLeft": 6,
+        "cumulativeDistance": 0.0,
+        "lastDistance": None
+        }
+    print(gameState["target"]["name"])  #for cheating
     return gameState
 
 def processGuess(gameState, userGuess):
-    d = 0
     if gameState["guessesLeft"] <= 0:
-        return {"message": "Game over", "distance": "blah blah"}
+        return {"message": "Game over", "distance": gameState["lastDistance"], "cumulativeDistance": gameState["cumulativeDistance"]}
 
     guessedCountry = getCountryByName(userGuess)
     if not guessedCountry:
-        return {"message": "Invalid", "distance": "another test case"}
+        return {"message": "Invalid country name.", "distance": None, "cumulativeDistance": gameState["cumulativeDistance"]}
 
     guessedLatLon = getLatLon(guessedCountry)
     if guessedLatLon[0] is None:
-        return {"message": "Invalid", "distance": "more test cases"}
+        return {"message": "Invalid country coordinates.", "distance": None, "cumulativeDistance": gameState["cumulativeDistance"]}
 
     targetLatLon = gameState["target"]["latlng"]
     distance = haversine(targetLatLon[0], targetLatLon[1], guessedLatLon[0], guessedLatLon[1])
+    distance = round(distance, 2)
+    gameState["lastDistance"] = distance
+    gameState["cumulativeDistance"] += distance
+    gameState["guessesLeft"] -= 1
 
     if userGuess.lower() == gameState["target"]["name"].lower():
-        return {"message": "Correct!", "distance": distance}
+        return {"message": "Correct!", "distance": gameState["lastDistance"], "cumulativeDistance": gameState["cumulativeDistance"]}
 
-    gameState["guessesLeft"] -= 1
     if gameState["guessesLeft"] == 0:
-        return {"message": "Game over", "distance": distance}
-    printf(distance)
-    return {"message": "Wrong!", "distance": round(distance, 2)}
+        return {"message": "Game over", "distance": gameState["lastDistance"], "cumulativeDistance": gameState["cumulativeDistance"]}
+
+    return {"message": "Wrong!", "distance": gameState["lastDistance"], "cumulativeDistance": gameState["cumulativeDistance"]}
